@@ -13,8 +13,16 @@ function process() {
 
             for (var item in obj.county_results) {
 
-                let lisa = obj.county_results[item]['supreme-court'].candidates[0].votes;
-                let brian = obj.county_results[item]['supreme-court'].candidates[1].votes;
+                let lisa = 0;
+                let brian = 0;
+
+                obj.county_results[item]['supreme-court'].candidates.forEach(element => {
+                    if (element.name === 'Lisa Neubauer') {
+                        lisa = element.votes;
+                    } else {
+                        brian = element.votes;
+                    }
+                });
 
                 let diff = brian - lisa;
 
